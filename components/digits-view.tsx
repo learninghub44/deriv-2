@@ -10,6 +10,8 @@ import { TradeControls } from './trade-controls';
 import { TradeTypeChips } from '@/components/custom/trade-type-chips';
 import { SymbolSelector } from '@/components/custom/symbol-selector';
 import { ThemeToggle } from '@/components/custom/theme-toggle';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import type {
   AuthState,
   DerivAccount,
@@ -141,7 +143,14 @@ export function DigitsView({
         onSwitchAccount={onSwitchAccount}
         logoSrc={logoSrc}
         appName={appName}
-        actions={<ThemeToggle />}
+        actions={
+          <>
+            <Button asChild size="sm" variant="ghost">
+              <Link href="/bots">Bots</Link>
+            </Button>
+            <ThemeToggle />
+          </>
+        }
       />
       {/* Spacer to push content below fixed header — taller when authenticated (account bar visible) */}
       <div className={authState === 'authenticated' ? 'h-[76px] shrink-0' : 'h-[66px] shrink-0'} />
